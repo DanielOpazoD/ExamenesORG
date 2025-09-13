@@ -1,0 +1,5 @@
+{
+  "name": "Lab Report Analyzer",
+  "description": "An intelligent application to consolidate, analyze, and visualize historical data from lab report PDFs.",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visualizador de Reportes de Laboratorio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'brand-primary': '#007A7A',
+              'brand-secondary': '#005A5A',
+              'brand-light': '#E6F2F2',
+              'brand-accent': '#FFB800',
+              'danger': '#E53E3E',
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/recharts@2.12.7/umd/Recharts.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react": "https://esm.sh/react@^19.1.0",
+    "jspdf": "https://esm.sh/jspdf@^3.0.1",
+    "jspdf-autotable": "https://esm.sh/jspdf-autotable@^5.0.2",
+    "@google/genai": "https://esm.sh/@google/genai@^1.9.0",
+    "react-dropzone": "https://esm.sh/react-dropzone@^14.3.8"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-gray-100">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
