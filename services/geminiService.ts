@@ -4,11 +4,19 @@ import type { GeminiResponse } from '../types';
 
 const API_KEY = process.env.API_KEY;
 
-if (!API_KEY) {
-  throw new Error("API_KEY environment variable not set.");
-}
-
-const ai = new GoogleGenAI({ apiKey: API_KEY });
+// Lazily initialize the client so the app doesn't crash on load when the
+// API key is missing. This will throw a readable error only when the
+// service is actually used.
+let ai: GoogleGenAI | null = null;
+const getClient = (): GoogleGenAI => {
+  if (!API_KEY) {
+    throw new Error("API_KEY environment variable not set.");
+  }
+  if (!ai) {
+    ai = new GoogleGenAI({ apiKey: API_KEY });
+  }
+  return ai;
+};
 
 const responseSchema = {
     type: Type.OBJECT,
@@ -60,7 +68,7 @@ export const analyzePdf = async (file: File): Promise<GeminiResponse> => {
     };
 
     try {
-        const response: GenerateContentResponse = await ai.models.generateContent({
+        const response: GenerateContentResponse = await getClient().models.generateContent({
             model: 'gemini-2.5-flash',
             contents: { parts: [textPart, imagePart] },
             config: {
